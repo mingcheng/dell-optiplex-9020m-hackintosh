@@ -317,8 +317,22 @@
 		<integer>0</integer>
 		<key>EDID</key>
 		<dict>
+			<key>Custom</key>
+			<data>
+			AP///////wAJ0RuARVQAACUcAQSlNR54OgzVqVVMoSUNUFSla4DR
+			wLMAqcCBgIEAgcABAQEBVl4AoKCgKVAwIDUADyghAAAaAAAA/wBC
+			OUowMDQ0ODAxOQogAAAA/QAyTB5ZGwQRAPD4OPA8AAAA/ABCZW5R
+			IExDRAogICAgAYgCAyJxT5AfBRQEEwMSAhEBBxYVBiMJFweDAQAA
+			ZW4MABAAjArQiiDgLRAQPpYADyghAAAYAR0AclHQHiBuKFUADygh
+			AAAeAR0AvFLQHiC4KFVADyghAAAejArQkCBAMSAMQFUADyghAAAY
+			AAAAAAAAAAAAAAAAAAAAAAAAAAAAbg==
+			</data>
 			<key>Inject</key>
-			<false/>
+			<true/>
+			<key>ProductID</key>
+			<string>0x801B</string>
+			<key>VendorID</key>
+			<string>0x9D1</string>
 		</dict>
 		<key>Inject</key>
 		<dict>
