@@ -2,9 +2,9 @@
 
 ## 概述
 
-[Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019年初）二手市场的准系统价格大概在 400-500 上下，由于使用了 4 代的 Intel CPU，可以安装魔改的移动 i7 处理器，所以具有很高的性价比。
+[Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，由于使用了 4 代的 Intel CPU，可以安装魔改的移动 i7 处理器，所以具有很高的性价比。
 
-原来已经 Hackintosh 一台[联想的 ThinkCenter M93p](https://github.com/mingcheng/lenovo-thinkcentre-m93p-hackintosh) 机子，观察到 9020m 和它的芯片组都是为 Q87 芯片组，同时相比可以多搭载快 Sata 硬盘（分别是 Sata 和 M2 接口），同时还能使用 ngff 接口的无线网卡，因此又考虑多黑一台机子。
+原来已经 Hackintosh 一台[联想的 ThinkCenter M93p](https://github.com/mingcheng/lenovo-thinkcentre-m93p-hackintosh) 机子，观察到 9020m 和它的芯片组都是为 Q87 芯片组，同时相比可以多搭载块硬盘（分别是 SATA 和 M2 8020 接口），同时还能使用 ngff 接口的无线网卡，因此又考虑多黑一台机子。
 
 ![geekbench](screenshots/geekbench.png)
 
@@ -108,7 +108,7 @@ http://blog.daliansky.net/Use-AppleALC-sound-card-to-drive-the-correct-posture-o
 
 网卡和蓝牙这块替换了苹果提供的 `BCM943224` 然后使用转接卡转接到 ngff 插口上，硬件方面这个网卡的尺寸刚刚好可以容纳主机的空间，如下图：
 
-![BCM943224](screenshots/BCM943224.png)
+![BCM943224](screenshots/BCM943224.jpg)
 
 注意蓝牙天线以及 Wifi 天线的插头位置（我插反过，然后 Wifi 和蓝牙的信号都很差）。虽然这个网卡可以免驱动就可以使用，但是还是建议注入后使用，具体的方式参见：
 
@@ -157,13 +157,14 @@ sudo xattr -r -d com.apple.quarantine /Applications
 
 ```
 ioreg -lw0 | grep -i "IODisplayEDID" | sed -e 's/.*<//' -e 's/>//'
-
 ioreg -lw0 | grep IODisplayPrefsKey
 ```
 
 ## 参考资源
 
-https://comsysto.github.io/Display-Override-PropertyList-File-Parser-and-Generator-with-HiDPI-Support-For-Scaled-Resolutions/
-https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
-https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/
-https://blog.daliansky.net/Mac-frequently-used-to-the-command---continuous-update.html
+* https://comsysto.github.io/Display-Override-PropertyList-File-Parser-and-Generator-with-HiDPI-Support-For-Scaled-Resolutions/
+* https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
+* https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/
+* https://blog.daliansky.net/Mac-frequently-used-to-the-command---continuous-update.html
+
+`- eof -`
