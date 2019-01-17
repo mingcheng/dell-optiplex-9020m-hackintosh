@@ -99,26 +99,71 @@ Dell 的机子相比联想的机子在 BIOS 上操作比较复杂（个人不是
 	</dict>
 ```
 
-<!--
+经过测试，这样子设置以后就可以完美使用，具体更多的设置方法请参见教程：
+
+http://blog.daliansky.net/Use-AppleALC-sound-card-to-drive-the-correct-posture-of-AppleHDA.html
+
+
 ### 网卡和蓝牙
+
+网卡和蓝牙这块替换了苹果提供的 `BCM943224` 然后使用转接卡转接到 ngff 插口上，硬件方面这个网卡的尺寸刚刚好可以容纳主机的空间，如下图：
 
 ![BCM943224](screenshots/BCM943224.png)
 
+注意蓝牙天线以及 Wifi 天线的插头位置（我插反过，然后 Wifi 和蓝牙的信号都很差）。虽然这个网卡可以免驱动就可以使用，但是还是建议注入后使用，具体的方式参见：
+
+https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
+
+目前的问题是有部分时候蓝牙键盘连接会有卡顿的现象。解决的方案是同时按 `Command + Option` 然后点击蓝牙图标，就可以弹出调试菜单：
+
 ![blutooth-reset](screenshots/bluetooth-reset.png)
+
+初始化蓝牙模块以及已连接的 Apple 设备后，再重新插拔下就可以使用，但目前没有再发生卡顿的情况，还是需要观察。
 
 
 ### CPU 变频
 
+本机搭配了 4870HQ 的 CPU，变频这块可以参考 EFI 中 `ACPI/dsl/SSDT-0-CpuFriend.sdl` 这个文件，以下是效果：
+
 ![Intel-power-gadget](screenshots/intel-power-gadget.png)
 
-### 其他和 DSDT
+待机温度能够有效控制在 50 度以内。相比 ThinkCenter 的 4720HQ 从运行温度的角度上说，这块 CPU 对温度的控制总体温度低点。
 
 
-## 安装后
+### 其他
 
+
+## 安装后的常见操作
+
+隐藏第三方启动「允许任何来源的应用」选项
+
+```
+sudo spctl --master-disable
+```
+
+强制开启第三方 SSD 的 Trim 功能
+
+```
+sudo trimforce enable
+```
+
+删除启动确认的对话框，通常通过 Brew 等渠道的安装包：
+
+```
 sudo xattr -r -d com.apple.quarantine /Applications
+```
 
+提取 EDID，以及注入 DisplayVendorID 和 DisplayProductID
+
+```
+ioreg -lw0 | grep -i "IODisplayEDID" | sed -e 's/.*<//' -e 's/>//'
+
+ioreg -lw0 | grep IODisplayPrefsKey
+```
 
 ## 参考资源
 
--->
+https://comsysto.github.io/Display-Override-PropertyList-File-Parser-and-Generator-with-HiDPI-Support-For-Scaled-Resolutions/
+https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
+https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/
+https://blog.daliansky.net/Mac-frequently-used-to-the-command---continuous-update.html
