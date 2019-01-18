@@ -130,10 +130,9 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 待机温度能够有效控制在 50 度以内。相比 ThinkCenter 的 4720HQ 从运行温度的角度上说，这块 CPU 对温度的控制总体温度低点。
 
 
-### 其他
+## 其他
 
-
-## 安装后的常见操作
+### 安装后的常规操作
 
 隐藏第三方启动「允许任何来源的应用」选项
 
