@@ -194,13 +194,11 @@
 	<key>Boot</key>
 	<dict>
 		<key>Arguments</key>
-		<string>dart=0 nv_disable=1 darkwake=0  arch=x86_64 brcmfx-country=#a debug=0x100 kext-dev-mode=1</string>
+		<string>dart=0 nv_disable=1 darkwake=0  -v arch=x86_64 brcmfx-country=#a debug=0x100 kext-dev-mode=1</string>
 		<key>Debug</key>
 		<false/>
 		<key>DefaultVolume</key>
 		<string>LastBootedVolume</string>
-		<key>Fast</key>
-		<true/>
 		<key>Legacy</key>
 		<string>PBR</string>
 		<key>NeverHibernate</key>
@@ -209,6 +207,8 @@
 		<false/>
 		<key>Secure</key>
 		<false/>
+		<key>Timeout</key>
+		<integer>2</integer>
 		<key>XMPDetection</key>
 		<false/>
 	</dict>
