@@ -1,5 +1,7 @@
 # Dell OptiPlex 9020m 黑苹果（Hackintosh）安装指南
 
+![DELL OptiPlex 9020m](screenshots/9020m.jpg)
+
 ## 概述
 
 [Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，由于使用了 4 代的 Intel CPU，可以安装魔改的移动 i7 处理器，所以具有很高的性价比。
@@ -15,11 +17,14 @@
 3. 网卡使用 ngff 接口，可以搭配转接口使用 Apple 的原装无线和蓝牙模块；
 4. 硬件保有量比较大，维修和替换比较方便。
 
+
 ## 硬件介绍
 
 硬件方面从淘宝购买了准系统以及 4870HQ 的 CPU、两根 8g 的 DDR3 1600 三星内存条、固态硬盘为来自京东的三星 860 EVO 、蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡，同时 Sata 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊。
 
-![about](screenshots/about.png)
+2019-01-23 更新：已经平滑升级到 10.14.3，没有发现任何的问题。
+
+![about2](screenshots/about-10.14.3.png)
 
 总体模拟为 iMac14.1 ，根据目前运行的情况完美的部分为：
 
@@ -33,7 +38,7 @@
 还有不足的地方：
 
 1. 开机 USB 鼠标会有卡顿，大概 10s 以后恢复正常；
-2. 蓝牙连接会有时会有卡顿的现象，目前已经注入 BrcmPatchRAM2 工作正常，但仍需要观察。
+2. <del>蓝牙连接会有时会有卡顿的现象，目前已经注入 BrcmPatchRAM2 工作正常，但仍需要观察。</del> 在 `/L/E` 中注入了 `BrcmFirmwareData.kext` 和 `BrcmPatchRAM2.kext` 解决。
 
 
 ## 安装指南
@@ -119,6 +124,8 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 ![blutooth-reset](screenshots/bluetooth-reset.png)
 
 初始化蓝牙模块以及已连接的 Apple 设备后，再重新插拔下就可以使用，但目前没有再发生卡顿的情况，还是需要观察。
+
+更新（2019-01-23）：经过一周的测试，在 `/L/E` 中注入了 `BrcmFirmwareData.kext` 和 `BrcmPatchRAM2.kext` 没有发生卡顿的现象。
 
 
 ### CPU 变频
