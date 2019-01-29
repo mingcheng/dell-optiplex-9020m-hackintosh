@@ -15,23 +15,25 @@
 			<key>Fixes</key>
 			<dict>
 				<key>FixAirport</key>
-				<true/>
+				<false/>
 				<key>FixHDA</key>
 				<false/>
 				<key>FixHPET</key>
-				<false/>
-				<key>FixIPIC</key>
-				<false/>
-				<key>FixMutex</key>
 				<true/>
+				<key>FixIPIC</key>
+				<true/>
+				<key>FixMutex</key>
+				<false/>
 				<key>FixRTC</key>
 				<true/>
 				<key>FixSATA</key>
+				<false/>
+				<key>FixShutdown</key>
 				<true/>
 				<key>FixTMR</key>
 				<true/>
 				<key>FixUSB</key>
-				<true/>
+				<false/>
 				<key>FixWAK</key>
 				<false/>
 			</dict>
@@ -39,6 +41,20 @@
 			<string>DSDT.aml</string>
 			<key>Patches</key>
 			<array>
+				<dict>
+					<key>Comment</key>
+					<string>change SAT0 to SATA</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					U0FUMA==
+					</data>
+					<key>Replace</key>
+					<data>
+					U0FUQQ==
+					</data>
+				</dict>
 				<dict>
 					<key>Comment</key>
 					<string>change XHCI to XHC</string>
@@ -163,17 +179,11 @@
 			</dict>
 			<dict>
 				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>Cpu0Ist</string>
-			</dict>
-			<dict>
-				<key>Signature</key>
-				<string>SSDT</string>
-				<key>TableId</key>
-				<string>CpuPm</string>
+				<string>MATS</string>
 			</dict>
 		</array>
+		<key>FixHeaders</key>
+		<true/>
 		<key>HaltEnabler</key>
 		<false/>
 		<key>SSDT</key>
@@ -187,6 +197,8 @@
 				<key>CStates</key>
 				<true/>
 				<key>PStates</key>
+				<true/>
+				<key>PluginType</key>
 				<true/>
 			</dict>
 		</dict>
@@ -404,7 +416,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>D25513404QXFM59FB</string>
+		<string>D25351902GUFM591H</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -434,9 +446,9 @@
 		<key>ProductName</key>
 		<string>iMac14,1</string>
 		<key>SerialNumber</key>
-		<string>D25PH0EDF8J2</string>
+		<string>D25LVYZZF8J2</string>
 		<key>SmUUID</key>
-		<string>3B620FCF-99F1-4B15-8088-3E03A6799385</string>
+		<string>177B39B7-D106-49B1-993E-52B5DDCAD055</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
