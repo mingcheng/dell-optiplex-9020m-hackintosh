@@ -1,4 +1,4 @@
-# Dell OptiPlex 9020m 黑苹果（Hackintosh）安装指南
+# Dell OptiPlex 9020M 黑苹果（Hackintosh）安装指南
 
 ![DELL OptiPlex 9020m](screenshots/9020m.jpg)
 
@@ -6,7 +6,7 @@
 
 [Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，由于使用了 4 代的 Intel CPU，可以安装魔改的移动 i7 处理器，所以具有很高的性价比。
 
-原来已经 Hackintosh 一台[联想的 ThinkCenter M93p](https://github.com/mingcheng/lenovo-thinkcentre-m93p-hackintosh) 机子，观察到 9020m 和它的芯片组都是为 Q87 芯片组，同时相比可以多搭载块硬盘（分别是 SATA 和 M2 8020 接口），同时还能使用 ngff 接口的无线网卡，因此又考虑多黑一台机子。
+原来已经有一台 Hackintosh 了，来自[联想的 ThinkCenter M93P](https://github.com/mingcheng/lenovo-thinkcentre-m93p-hackintosh) 机子，观察到 9020m 和它的芯片组都是为 Q87 芯片组，同时相比可以多搭载块硬盘（分别是 SATA 和 M2 8020 接口），同时还能使用 ngff 接口的无线网卡，因此又考虑多黑一台机子。
 
 ![geekbench](screenshots/geekbench.png)
 
@@ -20,11 +20,11 @@
 
 ## 硬件介绍
 
-硬件方面从淘宝购买了准系统以及 4870HQ 的 CPU、两根 8g 的 DDR3 1600 三星内存条、固态硬盘为来自京东的三星 860 EVO 、蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡，同时 Sata 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊。
+硬件方面从淘宝购买了准系统以及 4870HQ 的 CPU、两根 8g 的 DDR3 1600 三星内存条、固态硬盘为来自京东的三星 860 EVO 、蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡，同时 SATA 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊。
 
 2019-01-23 更新：已经平滑升级到 10.14.3，没有发现任何的问题。
 
-![about2](screenshots/about-10.14.3.png)
+![about2](screenshots/about-2.png)
 
 总体模拟为 iMac14.1 ，根据目前运行的情况完美的部分为：
 
@@ -136,6 +136,28 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 
 待机温度能够有效控制在 50 度以内。相比 ThinkCenter 的 4720HQ 从运行温度的角度上说，这块 CPU 对温度的控制总体温度低点。
 
+### 其他
+
+映射正确的 SATA 方式，避免造成启动的时候磁盘顺序混乱，因此需要在 ACPI 下打个补丁
+
+```
+  <dict>
+  	<key>Comment</key>
+  	<string>change SAT0 to SATA</string>
+  	<key>Disabled</key>
+  	<false/>
+  	<key>Find</key>
+  	<data>
+  	U0FUMA==
+  	</data>
+  	<key>Replace</key>
+  	<data>
+  	U0FUQQ==
+  	</data>
+  </dict>
+```
+
+来源出处参考这里： https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/
 
 ## 其他
 
@@ -172,5 +194,6 @@ ioreg -lw0 | grep IODisplayPrefsKey
 * https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 * https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/
 * https://blog.daliansky.net/Mac-frequently-used-to-the-command---continuous-update.html
+* https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/
 
 `- eof -`
