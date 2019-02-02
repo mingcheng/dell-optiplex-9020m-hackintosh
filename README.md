@@ -4,25 +4,23 @@
 
 ## 概述
 
-[Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，由于使用了 4 代的 Intel CPU，可以安装魔改的移动 i7 处理器，所以具有很高的性价比。
+[Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，具有很高的性价比。
 
-原来已经有一台 Hackintosh 了，来自[联想的 ThinkCenter M93P](https://github.com/mingcheng/lenovo-thinkcentre-m93p-hackintosh) 机子，观察到 9020m 和它的芯片组都是为 Q87 芯片组，同时相比可以多搭载块硬盘（分别是 SATA 和 M2 8020 接口），同时还能使用 ngff 接口的无线网卡，因此又考虑多黑一台机子。
+原来已经有一台 Hackintosh 了，来自[联想的 ThinkCenter M93P](https://github.com/mingcheng/lenovo-thinkcentre-m93p-hackintosh) 机子，观察到 9020m 和它的芯片组都是为 Q87 芯片组，同时相比可以多搭载块硬盘（分别是 SATA 和 M2 8020 接口），因此又考虑多黑一台机子。
 
 ![geekbench](screenshots/geekbench.png)
 
 简单的说，这台机子的优势是：
 
 1. 可以使用四代魔改移动的 CPU，比较低的价格就可以上 i7 八核；
-2. 安装双硬盘，支持时间胶囊；
+2. 安装双硬盘，用于时间胶囊可以做到数据增量备份；
 3. 网卡使用 ngff 接口，可以搭配转接口使用 Apple 的原装无线和蓝牙模块；
 4. 硬件保有量比较大，维修和替换比较方便。
 
 
 ## 硬件介绍
 
-硬件方面从淘宝购买了准系统以及 4870HQ 的 CPU、两根 8g 的 DDR3 1600 三星内存条、固态硬盘为来自京东的三星 860 EVO 、蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡，同时 SATA 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊。
-
-2019-01-23 更新：已经平滑升级到 10.14.3，没有发现任何的问题。
+概述：硬件方面从淘宝购买了准系统以及 4870HQ 的 CPU、两根 8g 的 DDR3 1600 三星内存条、固态硬盘为来自京东的三星 860 EVO 、蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡，同时 SATA 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊。
 
 ![about2](screenshots/about-2.png)
 
@@ -31,8 +29,8 @@
 1. 完美睡眠（休眠）唤醒，同时开启 HiDPI 支持 2k 显示器；
 2. USB 端口、有线网卡、声卡均可以正常工作；
 3. 通过注入 SSDT 搭配 CPUFriend 能够实现变频；
-4. WIFI 和蓝牙能够正常使用，同时支持蓝牙键盘唤醒（还有部分不完美，需要观察）；
-5. AirDrop 能够正常使用，iMessage 还为测试；
+4. WIFI 和蓝牙能够正常使用，同时支持蓝牙键盘唤醒<del>（还有部分不完美，需要观察）</del>；
+5. AirDrop 能够正常使用，iMessage 还未经测试；
 6. 可以读取风扇转速、CPU 温度、硬盘温度等。
 
 还有不足的地方：
@@ -40,16 +38,18 @@
 1. 开机 USB 鼠标会有卡顿，大概 10s 以后恢复正常；
 2. <del>蓝牙连接会有时会有卡顿的现象，目前已经注入 BrcmPatchRAM2 工作正常，但仍需要观察。</del> 在 `/L/E` 中注入了 `BrcmFirmwareData.kext` 和 `BrcmPatchRAM2.kext` 解决。
 
+2019-01-23 更新：已经平滑升级到 10.14.3，没有发现任何的问题。
+
 
 ## 安装指南
 
 ### BIOS 设置
 
-Dell 的机子相比联想的机子在 BIOS 上操作比较复杂（个人不是很喜欢使用鼠标操作设置 BIOS），因此请务必小心和检查 BIOS 设置是否都已经生效。
+Dell 的机子的 BIOS 相比联想的机子在交互上操作较复杂（个人不是很喜欢使用鼠标操作设置 BIOS），因此请务必小心和检查 BIOS 设置是否都已经生效。
 
-通常二手的机子使用的时间都比较长，可能从来没有更换过 CMOS 电池，同时建议收到二手的机子以后，更换 CMOS 电池（这点是比较血泪的教训），9020M 的 CMOS 电池型号是 CR2032 。
+顺便说句，通常二手的机子使用的时间都比较长，可能出厂后就没有更换过 CMOS 电池。建议收到二手的机子以后，更换 CMOS 电池（这点是比较血泪的教训）。Dell 9020M 的 CMOS 电池型号是 CR2032 。
 
-设置对应的 BIOS，英文对照：
+针对黑苹果，设置对应的 BIOS：
 
 * Boot sequence -> UEFI
 * Advanced Boot Options -> Uncheck Enable Legacy Option ROMs - (only if graphics are UEFI capable)
@@ -58,7 +58,6 @@ Dell 的机子相比联想的机子在 BIOS 上操作比较复杂（个人不是
 * Integrated NIC -> Enabled
 * Secure Boot -> Disabled
 
-然后重启即可。
 
 ### 显卡
 
@@ -94,6 +93,8 @@ Dell 的机子相比联想的机子在 BIOS 上操作比较复杂（个人不是
 
 9020m 的声卡型号是 ALC255，注入 id 为 27 。使用的是 AppleALC 注入的合适，没有修改对应的 DSDT。
 
+注意：不要使用通用的 DSDT 中的 Layout3 Fixed Patch，打完这个补丁有可能会造成音频失真的问题，除非你知道怎么解决它。
+
 ```
 	<key>PciRoot(0x0)/Pci(0x1b,0x0)</key>
 	<dict>
@@ -104,7 +105,7 @@ Dell 的机子相比联想的机子在 BIOS 上操作比较复杂（个人不是
 	</dict>
 ```
 
-经过测试，这样子设置以后就可以完美使用，具体更多的设置方法请参见教程：
+经过测试，这样子设置以后就可以完美使用（由于没有需要，麦克风没测试），具体更多的设置方法请参见教程：
 
 http://blog.daliansky.net/Use-AppleALC-sound-card-to-drive-the-correct-posture-of-AppleHDA.html
 
@@ -134,7 +135,8 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 
 ![Intel-power-gadget](screenshots/intel-power-gadget.png)
 
-待机温度能够有效控制在 50 度以内。相比 ThinkCenter 的 4720HQ 从运行温度的角度上说，这块 CPU 对温度的控制总体温度低点。
+待机温度能够有效控制在 50 度以内。相比 ThinkCenter M93P 的 4720HQ 从运行温度的角度上说，这块 CPU 对温度的控制总体温度低点。所以，相对 4720HQ，推荐使用 4870HQ 这块 CPU。
+
 
 ### 其他
 
@@ -187,6 +189,15 @@ sudo xattr -r -d com.apple.quarantine /Applications
 ioreg -lw0 | grep -i "IODisplayEDID" | sed -e 's/.*<//' -e 's/>//'
 ioreg -lw0 | grep IODisplayPrefsKey
 ```
+
+## FAQ
+
+A：运行稳定吗？
+Q：装机以后直接使用 stress 烤机 48 小时（扔公司，过了个周末），满载 80-90 度无死机、重启等现象，使用过程中目前已经超过两周无司机现象，uptime 目前最高达到 5days。
+
+A：支不支持 4K 分辨率？
+Q：我使用的是 2K 显示器开了 HiDPI 实际分辨率为 `3840x2160@60Hz` ，这应该是 4870HQ 核显 DP 端口的最大分辨率了。所以，理论是支持 4K 分辨率的，不过由于是核显就别指望它玩游戏了。
+
 
 ## 参考资源
 
