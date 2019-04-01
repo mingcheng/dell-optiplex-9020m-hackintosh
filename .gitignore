@@ -1,0 +1,8 @@
+# Architecture specific extensions/prefixes
+*.out
+.DS_Store
+
+# Emacs backup files
+*~
+.*~
+/EFI/Clover_Install_Log.txt

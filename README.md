@@ -2,6 +2,8 @@
 
 ![DELL OptiPlex 9020m](screenshots/9020m.jpg)
 
+
+
 ## 概述
 
 [Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，具有很高的性价比。
@@ -10,21 +12,14 @@
 
 ![geekbench](screenshots/geekbench.png)
 
-简单的说，这台机子的优势是：
+简单的说，这台机子硬件方面的优势是：
 
 1. 可以使用四代魔改移动的 CPU，比较低的价格就可以上 i7 八核；
 2. 安装双硬盘，用于时间胶囊可以做到数据增量备份；
 3. 网卡使用 ngff 接口，可以搭配转接口使用 Apple 的原装无线和蓝牙模块；
 4. 硬件保有量比较大，维修和替换比较方便。
 
-
-## 硬件介绍
-
-概述：硬件方面从淘宝购买了准系统以及 4870HQ 的 CPU、两根 8g 的 DDR3 1600 三星内存条、固态硬盘为来自京东的三星 860 EVO 、蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡，同时 SATA 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊。
-
-![about2](screenshots/about-2.png)
-
-总体模拟为 iMac14.1 ，根据目前运行的情况完美的部分为：
+在黑苹果的兼容性方面，总体模拟为 `iMac14.1` （参见 `config.plist` 配置文件） ，根据目前运行的情况完美的部分为：
 
 1. 完美睡眠（休眠）唤醒，同时开启 HiDPI 支持 2k 显示器；
 2. USB 端口、有线网卡、声卡均可以正常工作；
@@ -38,7 +33,45 @@
 1. 开机 USB 鼠标会有卡顿，大概 10s 以后恢复正常；
 2. <del>蓝牙连接会有时会有卡顿的现象，目前已经注入 BrcmPatchRAM2 工作正常，但仍需要观察。</del> 在 `/L/E` 中注入了 `BrcmFirmwareData.kext` 和 `BrcmPatchRAM2.kext` 解决。
 
-2019-01-23 更新：已经平滑升级到 10.14.3，没有发现任何的问题。
+
+## 更新记录
+
+### 2019─03─31
+
+升级到 10.14.4 出现了问题，重启更新的时候发现卡在了启动阶段，但最终还是升级到了 10.14.4。后来更新了 `Clover r4586` 到 `r4862` 后解决（使用 tonymacx86 的编译包），同时更新了对应的 kext 的版本，没有发现任何的异常。
+
+参考和下载链接：
+
+* https://www.tonymacx86.com/threads/macos-10-14-4-update.274017/
+* https://www.tonymacx86.com/resources/categories/kexts.11/
+* https://www.tonymacx86.com/resources/categories/clover-builds.12/
+
+同时，在 `Clover r4862` 安装好了以后，`drivers64UEFI` 目录下是没有 `ApfsDriverLoader-64.efi` 以及 `AptioMemoryFix-64.efi` 等文件的。
+
+这样子，可能会造成无法识别 APFS 文件系统的引导，因此需要手工拷贝这几个文件到对应新安装的 Clover EFI 目录中。
+
+### 2019-01-23
+
+![about2](screenshots/about-2.png)
+
+已经通过安装包平滑升级到 10.14.3，升级过程没有发现任何的问题。
+
+### 2019-01-09
+
+初始化安装 10.14.2，相对比较完美了。
+
+
+## 硬件介绍
+
+个人在这台机子上的硬件方面：
+
+* 从淘宝购买了准系统以及 4870HQ 的 CPU，套餐价格为 ¥1290；
+* <del>两根 8g 的 DDR3 1600 三星内存条</del> 更换为两条尔必达（Elpida） DDR3 1600 内存；
+* 固态硬盘为来自京东渠道的三星 860 EVO（SATA 协议），后期加装了散热片；
+* 蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡；
+* <del>同时 SATA 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊</del> 更换为全新的希捷 SSHD 5400rpm 混合机械硬盘，用于时间胶囊的备份。
+
+总体来说，个人的策略就是出于数据安全的考虑，存储这块必须是有明确渠道的，最好是全新的。稳定性方面，到手以及黑苹果安装基本完毕会使用 stress 烤机 72 小时后再继续使用。
 
 
 ## 安装指南
@@ -58,19 +91,18 @@ Dell 的机子的 BIOS 相比联想的机子在交互上操作较复杂（个人
 * Integrated NIC -> Enabled
 * Secure Boot -> Disabled
 
-
 ### 显卡
 
 本机搭配的是 [4870HQ 搭配了 Iris™ Pro Graphics 5200 的核心显卡](https://ark.intel.com/products/83504/Intel-Core-i7-4870HQ-Processor-6M-Cache-up-to-3-70-GHz-)，可以正确被 Mojave 驱动，同时通过打 FrameBuffer 补丁以后显示 2048m 的显存。目前，主要通过 WhateverGreen 驱动以及使用 FB-Patcher 打补丁。
 
-```
+```xml
 <key>ig-platform-id</key>
 <string>0x0d220003</string>
 ```
 
 然后打上对应的补丁
 
-```
+```xml
 	<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
 	<dict>
 		<key>framebuffer-patch-enable</key>
@@ -95,7 +127,7 @@ Dell 的机子的 BIOS 相比联想的机子在交互上操作较复杂（个人
 
 注意：不要使用通用的 DSDT 中的 Layout3 Fixed Patch，打完这个补丁有可能会造成音频失真的问题，除非你知道怎么解决它。
 
-```
+```xml
 	<key>PciRoot(0x0)/Pci(0x1b,0x0)</key>
 	<dict>
 		<key>layout-id</key>
@@ -142,7 +174,7 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 
 映射正确的 SATA 方式，避免造成启动的时候磁盘顺序混乱，因此需要在 ACPI 下打个补丁
 
-```
+```xml
   <dict>
   	<key>Comment</key>
   	<string>change SAT0 to SATA</string>
