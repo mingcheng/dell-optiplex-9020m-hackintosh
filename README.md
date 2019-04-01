@@ -36,9 +36,9 @@
 
 ## 更新记录
 
-### 2019─03─31
+### 2019-03-31
 
-升级到 10.14.4 出现了问题，重启更新的时候发现卡在了启动阶段，但最终还是升级到了 10.14.4。后来更新了 `Clover r4586` 到 `r4862` 后解决（使用 tonymacx86 的编译包），同时更新了对应的 kext 的版本，没有发现任何的异常。
+升级到 10.14.4 出现了问题，重启更新的时候发现卡在了启动阶段，但最终还是升级到了 10.14.4。后来根据 Tonymacx86 的帖子更新了 `Clover r4586` 到 `r4862` 后解决（使用 tonymacx86 的编译包），目前没有发现任何的异常。
 
 参考和下载链接：
 
@@ -46,9 +46,9 @@
 * https://www.tonymacx86.com/resources/categories/kexts.11/
 * https://www.tonymacx86.com/resources/categories/clover-builds.12/
 
-同时，在 `Clover r4862` 安装好了以后，`drivers64UEFI` 目录下是没有 `ApfsDriverLoader-64.efi` 以及 `AptioMemoryFix-64.efi` 等文件的。
+在 `Clover r4862` 安装好了以后，`drivers64UEFI` 目录下是没有 `ApfsDriverLoader-64.efi` 以及 `AptioMemoryFix-64.efi` 等文件的。这样子，可能会造成无法识别 APFS 文件系统的引导，因此需要手工拷贝这几个文件到对应新安装的 Clover EFI 目录中。
 
-这样子，可能会造成无法识别 APFS 文件系统的引导，因此需要手工拷贝这几个文件到对应新安装的 Clover EFI 目录中。
+同时更新了内核扩展模块的版本，以及合并和清除了部分多余的内核扩展，重启后持续运行几天目前不影响正常的使用。
 
 ### 2019-01-23
 
