@@ -2,9 +2,32 @@
 
 ![DELL OptiPlex 9020m](screenshots/9020m.jpg)
 
+<!-- TOC depthFrom:2 depthTo:4 orderedList:false -->
+
+- [概述](#概述)
+- [更新记录](#更新记录)
+  - [2019-05-21](#2019-05-21)
+  - [2019-03-31](#2019-03-31)
+  - [2019-01-23](#2019-01-23)
+  - [2019-01-09](#2019-01-09)
+- [硬件介绍](#硬件介绍)
+- [安装指南](#安装指南)
+  - [BIOS 设置](#bios-设置)
+  - [显卡](#显卡)
+  - [声卡](#声卡)
+  - [网卡和蓝牙](#网卡和蓝牙)
+  - [CPU 变频](#cpu-变频)
+  - [其他](#其他)
+- [其他](#其他-1)
+  - [安装后的常规操作](#安装后的常规操作)
+- [FAQ](#faq)
+- [参考资源](#参考资源)
+
+<!-- /TOC -->
+
 ## 概述
 
-[Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，具有很高的性价比。
+[Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019 年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，具有很高的性价比。
 
 原来已经有一台 Hackintosh 了，来自[联想的 ThinkCenter M93P](https://github.com/mingcheng/lenovo-thinkcentre-m93p-hackintosh) 机子，观察到 9020m 和它的芯片组都是为 Q87 芯片组，同时相比可以多搭载块硬盘（分别是 SATA 和 M2 8020 接口），因此又考虑多黑一台机子。
 
@@ -31,7 +54,6 @@
 1. 开机 USB 鼠标会有卡顿，大概 10s 以后恢复正常；
 2. <del>蓝牙连接会有时会有卡顿的现象，目前已经注入 BrcmPatchRAM2 工作正常，但仍需要观察。</del> 在 `/L/E` 中注入了 `BrcmFirmwareData.kext` 和 `BrcmPatchRAM2.kext` 解决。
 
-
 ## 更新记录
 
 ### 2019-05-21
@@ -46,9 +68,9 @@
 
 参考和下载链接：
 
-* https://www.tonymacx86.com/threads/macos-10-14-4-update.274017/
-* https://www.tonymacx86.com/resources/categories/kexts.11/
-* https://www.tonymacx86.com/resources/categories/clover-builds.12/
+- https://www.tonymacx86.com/threads/macos-10-14-4-update.274017/
+- https://www.tonymacx86.com/resources/categories/kexts.11/
+- https://www.tonymacx86.com/resources/categories/clover-builds.12/
 
 在 `Clover r4862` 安装好了以后，`drivers64UEFI` 目录下是没有 `ApfsDriverLoader-64.efi` 以及 `AptioMemoryFix-64.efi` 等文件的。这样子，可能会造成无法识别 APFS 文件系统的引导，因此需要手工拷贝这几个文件到对应新安装的 Clover EFI 目录中。
 
@@ -64,21 +86,19 @@
 
 初始化安装 10.14.2，相对比较完美了。
 
-
 ## 硬件介绍
 
 个人在这台机子上的硬件方面：
 
-* 从淘宝购买了准系统以及 4870HQ 的 CPU，套餐价格为 ¥1290；
-* <del>两根 8g 的 DDR3 1600 三星内存条</del> 更换为两条尔必达（Elpida） DDR3 1600 内存；
-* 固态硬盘为来自京东渠道的三星 860 EVO（SATA 协议），后期加装了散热片；
-* 蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡；
-* <del>同时 SATA 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊</del> 更换为全新的希捷 SSHD 5400rpm 1T 的混合机械硬盘，用于时间胶囊的备份和大文件存储。
+- 从淘宝购买了准系统以及 4870HQ 的 CPU，套餐价格为 ¥1290；
+- <del>两根 8g 的 DDR3 1600 三星内存条</del> 更换为两条尔必达（Elpida） DDR3 1600 内存；
+- 固态硬盘为来自京东渠道的三星 860 EVO（SATA 协议），后期加装了散热片；
+- 蓝牙和无线网卡使用 MacBook Air 拆机的 BCM943224，搭配了 ngff 转接卡；
+- <del>同时 SATA 硬盘位安装了拆机的 500g 日立机械硬盘用作时间胶囊</del> 更换为全新的希捷 SSHD 5400rpm 1T 的混合机械硬盘，用于时间胶囊的备份和大文件存储。
 
 总体来说，个人的策略就是出于数据安全的考虑，存储这块必须是有明确渠道的，最好是全新的。
 
 稳定性方面，到手以及黑苹果安装基本完毕会使用 stress 烤机 72 小时后再继续使用。
-
 
 ## 安装指南
 
@@ -90,12 +110,12 @@ Dell 的机子的 BIOS 相比联想的机子在交互上操作较复杂（个人
 
 针对黑苹果，设置对应的 BIOS：
 
-* Boot sequence -> UEFI
-* Advanced Boot Options -> Uncheck Enable Legacy Option ROMs - (only if graphics are UEFI capable)
-* Serial Port -> Disabled
-* Sata Operation -> AHCI
-* Integrated NIC -> Enabled
-* Secure Boot -> Disabled
+- Boot sequence -> UEFI
+- Advanced Boot Options -> Uncheck Enable Legacy Option ROMs - (only if graphics are UEFI capable)
+- Serial Port -> Disabled
+- Sata Operation -> AHCI
+- Integrated NIC -> Enabled
+- Secure Boot -> Disabled
 
 ### 显卡
 
@@ -126,7 +146,6 @@ Dell 的机子的 BIOS 相比联想的机子在交互上操作较复杂（个人
 
 ![fb-patcher](screenshots/fb-patcher.png)
 
-
 ### 声卡
 
 9020m 的声卡型号是 ALC255，注入 id 为 27 。使用的是 AppleALC 注入的合适，没有修改对应的 DSDT。
@@ -147,7 +166,6 @@ Dell 的机子的 BIOS 相比联想的机子在交互上操作较复杂（个人
 
 http://blog.daliansky.net/Use-AppleALC-sound-card-to-drive-the-correct-posture-of-AppleHDA.html
 
-
 ### 网卡和蓝牙
 
 网卡和蓝牙这块替换了苹果提供的 `BCM943224` 然后使用转接卡转接到 ngff 插口上，硬件方面这个网卡的尺寸刚刚好可以容纳主机的空间，如下图：
@@ -166,7 +184,6 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 
 更新（2019-01-23）：经过一周的测试，在 `/L/E` 中注入了 `BrcmFirmwareData.kext` 和 `BrcmPatchRAM2.kext` 没有发生卡顿的现象。
 
-
 ### CPU 变频
 
 本机搭配了 4870HQ 的 CPU，变频这块可以参考 EFI 中 `ACPI/dsl/SSDT-0-CpuFriend.sdl` 这个文件，以下是效果：
@@ -174,7 +191,6 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 ![Intel-power-gadget](screenshots/intel-power-gadget.png)
 
 待机温度能够有效控制在 50 度以内。相比 ThinkCenter M93P 的 4720HQ 从运行温度的角度上说，这块 CPU 对温度的控制总体温度低点。所以，相对 4720HQ，推荐使用 4870HQ 这块 CPU。
-
 
 ### 其他
 
@@ -236,13 +252,12 @@ Q：装机以后直接使用 stress 烤机 48 小时（扔公司，过了个周�
 A：支不支持 4K 分辨率？
 Q：我使用的是 2K 显示器开了 HiDPI 实际分辨率为 `3840x2160@60Hz` 使用分辨率为 `1920x1080`，[这应该是 4870HQ 核显 DP 端口的最大分辨率了](https://ark.intel.com/products/83504/Intel-Core-i7-4870HQ-Processor-6M-Cache-up-to-3-70-GHz-)。所以是支持 4K 分辨率的，不过由于是四代的 CPU 核显就别指望它玩游戏了。
 
-
 ## 参考资源
 
-* https://comsysto.github.io/Display-Override-PropertyList-File-Parser-and-Generator-with-HiDPI-Support-For-Scaled-Resolutions/
-* https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
-* https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/
-* https://blog.daliansky.net/Mac-frequently-used-to-the-command---continuous-update.html
-* https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/
+- https://comsysto.github.io/Display-Override-PropertyList-File-Parser-and-Generator-with-HiDPI-Support-For-Scaled-Resolutions/
+- https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
+- https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/
+- https://blog.daliansky.net/Mac-frequently-used-to-the-command---continuous-update.html
+- https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/
 
 `- eof -`
