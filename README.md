@@ -34,6 +34,12 @@
 
 ## 更新记录
 
+### 2019-05-21
+
+平滑升级到了 10.14.5，更新了 `WhateverGreen` 以及 `Lilu` 和 `AppleALC` 驱动，[并打了 USB 相关的补丁](https://www.tonymacx86.com/threads/mojave-10-14-5-port-limit-removal-patch.277166/)，没有发现任何的异常。
+
+![10.14.5](screenshots/about-10.14.5.png)
+
 ### 2019-03-31
 
 升级到 10.14.4 出现了问题，重启更新的时候发现卡在了启动阶段，但最终还是升级到了 10.14.4。后来根据 Tonymacx86 的帖子更新了 `Clover r4586` 到 `r4862` 后解决（使用 tonymacx86 的编译包），目前没有发现任何的异常。
