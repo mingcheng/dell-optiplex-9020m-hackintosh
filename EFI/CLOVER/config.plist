@@ -43,6 +43,86 @@
 			<array>
 				<dict>
 					<key>Comment</key>
+					<string>USB port limit patch #1 10.14.x modify by DalianSky(credit ydeng)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					g/sPDw==
+					</data>
+					<key>InfoPlistPatch</key>
+					<false/>
+					<key>MatchOS</key>
+					<string>10.14.x</string>
+					<key>Name</key>
+					<string>com.apple.iokit.IOUSBHostFamily</string>
+					<key>Replace</key>
+					<data>
+					g/s/Dw==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>USB port limit patch #2 10.14.x modify by DalianSky(credit PMHeart)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					g+MP0w==
+					</data>
+					<key>InfoPlistPatch</key>
+					<false/>
+					<key>MatchOS</key>
+					<string>10.14.x</string>
+					<key>Name</key>
+					<string>com.apple.iokit.IOUSBHostFamily</string>
+					<key>Replace</key>
+					<data>
+					g+M/0w==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>USB Port limit patch #3 10.14.x modify by DalianSky(credits PMheart)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					g/sPDw==
+					</data>
+					<key>InfoPlistPatch</key>
+					<false/>
+					<key>MatchOS</key>
+					<string>10.14.x</string>
+					<key>Name</key>
+					<string>com.apple.driver.usb.AppleUSBXHCI</string>
+					<key>Replace</key>
+					<data>
+					g/s/Dw==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
+					<string>USB Port limit patch #4 10.14.x modify by DalianSky(credits PMheart)</string>
+					<key>Disabled</key>
+					<false/>
+					<key>Find</key>
+					<data>
+					g/8PDw==
+					</data>
+					<key>InfoPlistPatch</key>
+					<false/>
+					<key>MatchOS</key>
+					<string>10.14.x</string>
+					<key>Name</key>
+					<string>com.apple.driver.usb.AppleUSBXHCI</string>
+					<key>Replace</key>
+					<data>
+					g/8/Dw==
+					</data>
+				</dict>
+				<dict>
+					<key>Comment</key>
 					<string>change SAT0 to SATA</string>
 					<key>Disabled</key>
 					<false/>
@@ -416,7 +496,7 @@
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>D25351902GUFM591H</string>
+		<string>D25418303J9FM591F</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -446,9 +526,9 @@
 		<key>ProductName</key>
 		<string>iMac14,1</string>
 		<key>SerialNumber</key>
-		<string>D25LVYZZF8J2</string>
+		<string>D25MNZZSF8J2</string>
 		<key>SmUUID</key>
-		<string>177B39B7-D106-49B1-993E-52B5DDCAD055</string>
+		<string>F30758EE-8FAA-4877-A8CE-660AA067BC4B</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
