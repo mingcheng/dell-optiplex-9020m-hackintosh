@@ -9,6 +9,7 @@
 - [目录](#目录)
 - [概述](#概述)
 - [更新记录](#更新记录)
+  - [2019-05-22](#2019-05-22)
   - [2019-05-21](#2019-05-21)
   - [2019-03-31](#2019-03-31)
   - [2019-01-23](#2019-01-23)
@@ -59,9 +60,17 @@
 
 ## 更新记录
 
+### 2019-05-22
+
+尝试使用了 Hackintool 这个工具，通过这个工具更新了 Clover 以及必要的几个 kexts ，推荐使用这个工具非常的好用。
+
+![Hackintool](screenshots/hackintool.png)
+
 ### 2019-05-21
 
 平滑升级到了 10.14.5，更新了 `WhateverGreen` 以及 `Lilu` 和 `AppleALC` 驱动，[并打了 USB 相关的补丁](https://www.tonymacx86.com/threads/mojave-10-14-5-port-limit-removal-patch.277166/)，没有发现任何的异常。
+
+详细的使用介绍参见： https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html
 
 ![10.14.5](screenshots/about-10.14.5.png)
 
