@@ -23,9 +23,9 @@
   - [CPU 变频](#cpu-变频)
   - [其他](#其他)
 - [其他](#其他-1)
-  - [安装后的常规操作](#安装后的常规操作)
-- [FAQ](#faq)
-- [参考资源](#参考资源)
+  - [安装后](#安装后)
+  - [FAQ](#faq)
+  - [参考资源](#参考资源)
 
 <!-- /TOC -->
 
@@ -62,7 +62,7 @@
 
 ### 2019-05-22
 
-尝试使用了 Hackintool 这个工具，通过这个工具更新了 Clover 以及必要的几个 kexts ，推荐使用这个工具非常的好用。
+尝试使用了 [Hackintool](https://www.tonymacx86.com/threads/release-hackintool-v2-5-1.254559/) 这个工具，通过这个工具更新了 Clover 以及必要的几个 kexts ，推荐使用这个工具非常的好用。
 
 ![Hackintool](screenshots/hackintool.png)
 
@@ -229,7 +229,7 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 
 ## 其他
 
-### 安装后的常规操作
+### 安装后
 
 隐藏第三方启动「允许任何来源的应用」选项
 
@@ -256,7 +256,7 @@ ioreg -lw0 | grep -i "IODisplayEDID" | sed -e 's/.*<//' -e 's/>//'
 ioreg -lw0 | grep IODisplayPrefsKey
 ```
 
-## FAQ
+### FAQ
 
 A：运行稳定吗？
 Q：装机以后直接使用 stress 烤机 48 小时（扔公司，过了个周末），满载 CPU 温度 80-90 度无死机、重启等现象，使用过程中目前已经超过两周无死机现象，uptime 目前最高达到 5days。
@@ -264,8 +264,9 @@ Q：装机以后直接使用 stress 烤机 48 小时（扔公司，过了个周�
 A：支不支持 4K 分辨率？
 Q：我使用的是 2K 显示器开了 HiDPI 实际分辨率为 `3840x2160@60Hz` 使用分辨率为 `1920x1080`，[这应该是 4870HQ 核显 DP 端口的最大分辨率了](https://ark.intel.com/products/83504/Intel-Core-i7-4870HQ-Processor-6M-Cache-up-to-3-70-GHz-)。所以是支持 4K 分辨率的，不过由于是四代的 CPU 核显就别指望它玩游戏了。
 
-## 参考资源
+### 参考资源
 
+- https://www.tonymacx86.com/threads/release-hackintool-v2-5-1.254559/
 - https://comsysto.github.io/Display-Override-PropertyList-File-Parser-and-Generator-with-HiDPI-Support-For-Scaled-Resolutions/
 - https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 - https://www.tonymacx86.com/threads/an-idiots-guide-to-lilu-and-its-plug-ins.260063/
