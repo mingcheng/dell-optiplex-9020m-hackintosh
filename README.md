@@ -2,10 +2,14 @@
 
 ![DELL OptiPlex 9020m](screenshots/9020m.jpg)
 
+## 目录
+
 <!-- TOC depthFrom:2 depthTo:4 orderedList:false -->
 
+- [目录](#目录)
 - [概述](#概述)
 - [更新记录](#更新记录)
+  - [2019-05-22](#2019-05-22)
   - [2019-05-21](#2019-05-21)
   - [2019-03-31](#2019-03-31)
   - [2019-01-23](#2019-01-23)
@@ -56,9 +60,17 @@
 
 ## 更新记录
 
+### 2019-05-22
+
+尝试使用了 Hackintool 这个工具，通过这个工具更新了 Clover 以及必要的几个 kexts ，推荐使用这个工具非常的好用。
+
+![Hackintool](screenshots/hackintool.png)
+
 ### 2019-05-21
 
 平滑升级到了 10.14.5，更新了 `WhateverGreen` 以及 `Lilu` 和 `AppleALC` 驱动，[并打了 USB 相关的补丁](https://www.tonymacx86.com/threads/mojave-10-14-5-port-limit-removal-patch.277166/)，没有发现任何的异常。
+
+详细的使用介绍参见： https://blog.daliansky.net/Intel-FB-Patcher-tutorial-and-insertion-pose.html
 
 ![10.14.5](screenshots/about-10.14.5.png)
 
@@ -129,17 +141,17 @@ Dell 的机子的 BIOS 相比联想的机子在交互上操作较复杂（个人
 然后打上对应的补丁
 
 ```xml
-	<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
-	<dict>
-		<key>framebuffer-patch-enable</key>
-		<data>
-		AQAAAA==
-		</data>
-		<key>framebuffer-unifiedmem</key>
-		<data>
-		AAAAgA==
-		</data>
-	</dict>
+<key>PciRoot(0x0)/Pci(0x2,0x0)</key>
+<dict>
+	<key>framebuffer-patch-enable</key>
+	<data>
+	AQAAAA==
+	</data>
+	<key>framebuffer-unifiedmem</key>
+	<data>
+	AAAAgA==
+	</data>
+</dict>
 ```
 
 然后就可以看到运行正常了：
@@ -153,13 +165,13 @@ Dell 的机子的 BIOS 相比联想的机子在交互上操作较复杂（个人
 注意：不要使用通用的 DSDT 中的 Layout3 Fixed Patch，打完这个补丁有可能会造成音频失真的问题，除非你知道怎么解决它。
 
 ```xml
-	<key>PciRoot(0x0)/Pci(0x1b,0x0)</key>
-	<dict>
-		<key>layout-id</key>
-		<data>
-		GwAAAA==
-		</data>
-	</dict>
+<key>PciRoot(0x0)/Pci(0x1b,0x0)</key>
+<dict>
+	<key>layout-id</key>
+	<data>
+	GwAAAA==
+	</data>
+</dict>
 ```
 
 经过测试，这样子设置以后就可以完美使用（由于没有需要，麦克风没测试），具体更多的设置方法请参见教程：
@@ -197,20 +209,20 @@ https://www.tonymacx86.com/threads/broadcom-wifi-bluetooth-guide.242423/
 映射正确的 SATA 方式，避免造成启动的时候磁盘顺序混乱，因此需要在 ACPI 下打个补丁
 
 ```xml
-  <dict>
-  	<key>Comment</key>
-  	<string>change SAT0 to SATA</string>
-  	<key>Disabled</key>
-  	<false/>
-  	<key>Find</key>
-  	<data>
-  	U0FUMA==
-  	</data>
-  	<key>Replace</key>
-  	<data>
-  	U0FUQQ==
-  	</data>
-  </dict>
+<dict>
+	<key>Comment</key>
+	<string>change SAT0 to SATA</string>
+	<key>Disabled</key>
+	<false/>
+	<key>Find</key>
+	<data>
+	U0FUMA==
+	</data>
+	<key>Replace</key>
+	<data>
+	U0FUQQ==
+	</data>
+</dict>
 ```
 
 来源出处参考这里： https://hackintosh.gitbook.io/-r-hackintosh-vanilla-desktop-guide/
