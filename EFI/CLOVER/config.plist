@@ -493,12 +493,10 @@
 		<string>Apple Inc.</string>
 		<key>BiosVersion</key>
 		<string>IM141.88Z.0131.B00.1809171347</string>
-		<key>Board-ID</key>
-		<string>Mac-031B6874CF7F642A</string>
 		<key>BoardManufacturer</key>
 		<string>Apple Inc.</string>
 		<key>BoardSerialNumber</key>
-		<string>D25418303J9FM591F</string>
+		<string>D25327300GUFM59CB</string>
 		<key>BoardType</key>
 		<integer>10</integer>
 		<key>BoardVersion</key>
@@ -528,16 +526,14 @@
 		<key>ProductName</key>
 		<string>iMac14,1</string>
 		<key>SerialNumber</key>
-		<string>D25MNZZSF8J2</string>
+		<string>D25L14Z8F8J2</string>
 		<key>SmUUID</key>
-		<string>F30758EE-8FAA-4877-A8CE-660AA067BC4B</string>
+		<string>BE4BD3EE-30E2-4486-B7F9-5A1FD024CBCE</string>
 		<key>Version</key>
 		<string>1.0</string>
 	</dict>
 	<key>SystemParameters</key>
 	<dict>
-		<key>CustomUUID</key>
-		<string>FD00CEB9-A8FC-4DFC-9E42-545738D20F6A</string>
 		<key>InjectKexts</key>
 		<string>Yes</string>
 		<key>InjectSystemID</key>
