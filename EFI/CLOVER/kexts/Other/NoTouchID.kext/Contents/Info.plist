@@ -3,78 +3,65 @@
 <plist version="1.0">
 <dict>
 	<key>BuildMachineOSBuild</key>
-	<string>18E226</string>
+	<string>18G1012</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
-	<string>SMCProcessor</string>
+	<string>NoTouchID</string>
 	<key>CFBundleIdentifier</key>
-	<string>as.vit9696.SMCProcessor</string>
+	<string>xyz.racermaster.NoTouchID</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>SMCProcessor</string>
+	<string>NoTouchID</string>
 	<key>CFBundlePackageType</key>
 	<string>KEXT</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.1.1</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
+	<string>1.0.3</string>
 	<key>CFBundleSupportedPlatforms</key>
 	<array>
 		<string>MacOSX</string>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.1.1</string>
+	<string>1.0.3</string>
 	<key>DTCompiler</key>
 	<string>com.apple.compilers.llvm.clang.1_0</string>
 	<key>DTPlatformBuild</key>
-	<string>10E1001</string>
+	<string>11B500</string>
 	<key>DTPlatformVersion</key>
 	<string>GM</string>
 	<key>DTSDKBuild</key>
-	<string>18E219</string>
+	<string>19B89</string>
 	<key>DTSDKName</key>
-	<string>macosx10.14</string>
+	<string>macosx10.15</string>
 	<key>DTXcode</key>
-	<string>1020</string>
+	<string>1120</string>
 	<key>DTXcodeBuild</key>
-	<string>10E1001</string>
+	<string>11B500</string>
 	<key>IOKitPersonalities</key>
 	<dict>
-		<key>as.vit9696.SMCProcessor</key>
+		<key>NoTouchID</key>
 		<dict>
 			<key>CFBundleIdentifier</key>
-			<string>as.vit9696.SMCProcessor</string>
+			<string>xyz.racermaster.NoTouchID</string>
 			<key>IOClass</key>
-			<string>SMCProcessor</string>
+			<string>NoTouchID</string>
 			<key>IOMatchCategory</key>
-			<string>SMCProcessor</string>
-			<key>IONameMatch</key>
-			<string>processor</string>
-			<key>IOPropertyMatch</key>
-			<dict>
-				<key>processor-index</key>
-				<integer>0</integer>
-			</dict>
+			<string>NoTouchID</string>
 			<key>IOProviderClass</key>
-			<string>IOACPIPlatformDevice</string>
+			<string>IOResources</string>
 			<key>IOResourceMatch</key>
-			<string>ACPI</string>
+			<string>IOKit</string>
 		</dict>
 	</dict>
-	<key>NSHumanReadableCopyright</key>
-	<string>Copyright © 2018 vit9696. All rights reserved.</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>10.13</string>
 	<key>OSBundleCompatibleVersion</key>
 	<string>1.0</string>
 	<key>OSBundleLibraries</key>
 	<dict>
 		<key>as.vit9696.Lilu</key>
 		<string>1.2.0</string>
-		<key>as.vit9696.VirtualSMC</key>
-		<string>1.0.0</string>
-		<key>com.apple.iokit.IOACPIFamily</key>
-		<string>1.0.0d1</string>
 		<key>com.apple.kpi.bsd</key>
 		<string>12.0.0</string>
 		<key>com.apple.kpi.dsep</key>
