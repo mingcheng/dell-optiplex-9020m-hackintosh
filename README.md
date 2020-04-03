@@ -9,6 +9,7 @@
 - [目录](#目录)
 - [概述](#概述)
 - [更新记录](#更新记录)
+  - [2020-04-02](#2020-04-02)
   - [2020-03-31](#2020-03-31)
   - [2019-07-27](#2019-07-27)
   - [2019-07-26](#2019-07-26)
@@ -36,6 +37,8 @@
 
 ## 概述
 
+![neofetch](screenshots/neofetch-2020-q2.png)
+
 [Dell OptiPlex 9020m](https://www.dell.com/support/home/ae/en/aebsdt1/product-support/product/optiplex-9020m-desktop/diagnose) 是款 Q87 芯片组的小型个人 PC，目前（2019 年初）二手市场的准系统价格大概在 400-500 上下而且保有量巨大，具有很高的性价比。
 
 原来已经有一台 Hackintosh 了，来自[联想的 ThinkCenter M93P](https://github.com/mingcheng/lenovo-thinkcentre-m93p-hackintosh) 机子，观察到 9020m 和它的芯片组都是为 Q87 芯片组，同时相比可以多搭载块硬盘（分别是 SATA 和 M2 8020 接口），因此又考虑多黑一台机子。
@@ -49,7 +52,7 @@
 3. 网卡使用 ngff 接口，可以搭配转接口使用 Apple 的原装无线和蓝牙模块；
 4. 硬件保有量比较大，维修和替换比较方便。
 
-在黑苹果的兼容性方面，总体模拟为 `iMac14.1` （参见 `config.plist` 配置文件） ，根据目前运行的情况完美的部分为：
+在黑苹果的兼容性方面，<del>总体模拟为 `iMac14.1` （参见 `config.plist` 配置文件）</del> 自更新到 10.15.4 以后，模拟为 Macmini 2014 款 ，根据目前运行的情况完美的部分为：
 
 1. 完美睡眠（休眠）唤醒，同时开启 HiDPI 支持 2k 显示器；
 2. USB 端口、有线网卡、声卡均可以正常工作；
@@ -61,15 +64,19 @@
 还有不足的地方：
 
 1. 开机 USB 鼠标会有卡顿，大概 10s 以后恢复正常；
-2. <del>蓝牙连接会有时会有卡顿的现象，目前已经注入 BrcmPatchRAM2 工作正常，但仍需要观察。</del> 在 `/L/E` 中注入了 `BrcmFirmwareData.kext` 和 `BrcmPatchRAM2.kext` 解决。
+2. <del>蓝牙连接会有时会有卡顿的现象，目前已经注入 BrcmPatchRAM2 工作正常，但仍需要观察。</del> 注1：在 `/L/E` 中注入了 `BrcmFirmwareData.kext` 和 `BrcmPatchRAM2.kext` 解决。注2：系统升级到 10.15.4 以后，直接使用原生的驱动，不用做更多的操作。
 
 ## 更新记录
+
+### 2020-04-02
+
+系统更新到 10.15.4（还是没有忍住，哈），更新了 Clover 最新版本以及精简了很多内核以及配置，目前挂机 48 小时没有任何的问题，但是 USB 启动还是会有几十秒钟的卡顿。
+
+![About 10.15.4](screenshots/about-10.15.4.png)
 
 ### 2020-03-31
 
 系统更新到 10.14.6 [18G4032](https://support.apple.com/en-us/HT211100), 更新内核模块以及 Clover 到最新版本。
-
-![2020 Q1](screenshots/neofetch-2020-q1.png)
 
 ### 2019-07-27
 
